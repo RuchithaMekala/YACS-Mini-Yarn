@@ -7,20 +7,19 @@ YACS – Yet Another Centralized Scheduling Framework, has one Master, workers w
 
 # Design
 The design of this framework is quite simple but effective.
- - 1. It has one Master/Driver processes and 3 worker processes mimicing 3 degenerate machines running on the same machine through different threads.
- - 2. Threading locks are used to prevent any kind of race conditions or dead locks.
- - 3. The master and the workers are connected through ports. Each worker operates on a different port.
- - 4. Each of the three workers have a certain number of slots available in them.
- - 5. A driver sends the queue of requests/tasks/jobs to be scheduled and the master schedules these queue of tasks using three different scheduling algorithms based on selection and they are
+ 1. It has one Master/Driver processes and 3 worker processes mimicing 3 degenerate machines running on the same machine through different threads.
+ 2. Threading locks are used to prevent any kind of race conditions or dead locks.
+ 3. The master and the workers are connected through ports. Each worker operates on a different port.
+ 4. Each of the three workers have a certain number of slots available in them.
+ 5. A driver sends the queue of requests/tasks/jobs to be scheduled and the master schedules these queue of tasks using three different scheduling algorithms based on selection and they are:
+  1. Round Robin Scheduling.
+  2. Least Loaded Scheduling.
+  3. Random Selection Scheduling.
 
-i. Round Robin Scheduling.
-ii. Least Loaded Scheduling.
-iii. Random Selection Scheduling.
-
- - 6. Both map and reduce tasks are scheduled and sent to workers.
- - 7. Master schedules the tasks using any one of the above algorithms and sends them to worker to update the time and the slots available.
- - 8. The worker acknowledge the connections and update the master through port connections.
- - 9. Log files are maintained to analyse the flow of tasks to and fro worker and master.
+  6. Both map and reduce tasks are scheduled and sent to workers.
+  7. Master schedules the tasks using any one of the above algorithms and sends them to worker to update the time and the slots available.
+  8. The worker acknowledge the connections and update the master through port connections.
+  9. Log files are maintained to analyse the flow of tasks to and fro worker and master.
 
 
 
